@@ -1,55 +1,23 @@
-import { useState } from "react";
-import "./App.css";
-import AddProduct from "./components/AddProduct";
+import BottomLinks from "./components/BottomLinks";
+import Footer from "./components/Footer";
+import MidSection from "./components/MidSection";
 import Navbar from "./components/Navbar";
-import ProductList from "./components/ProductList";
-import Total from "./components/Total";
+import TopSection from "./components/TopSection";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  let productList = [
-    { name: "iphone", price: 90000, qty: 1 },
-    { name: "iphone2", price: 80000, qty: 1 },
-    { name: "iphone3", price: 70000, qty: 1 },
-  ];
-
-  let [prodList, setProdList] = useState(productList);
-  let [total, setTotal] = useState(0);
-
-  let handleQty = (index, value) => {
-    let newList = [...prodList];
-    newList[index].qty += value;
-    setProdList(newList);
-
-    let newTotal = total;
-    newTotal += newList[index].price;
-    setTotal(newTotal);
-  };
-
-  let handleReset = () => {
-    let newList = [...prodList];
-    newList.map((product) => {
-      product.qty = 0;
-    });
-    setProdList(newList);
-
-    setTotal(0);
-  };
-
-  let handleAdd = (name,price,qty=0) =>{
-    let newList = [...prodList];
-    newList.push({name,price,qty})
-    setProdList(newList);
-  }
-
   return (
-    <div className="App">
-      <Navbar />
-      <main>
-        <AddProduct handleAdd={handleAdd}/>
-        <ProductList productList={prodList} handleQty={handleQty} />
-        <Total productList={prodList} handleReset={handleReset} total={total} />
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <main>
+          <TopSection />
+          <MidSection />
+        </main>
+        <Footer />
+        <BottomLinks />
+      </div>
+    </Router>
   );
 }
 
