@@ -7,9 +7,9 @@ import Total from "./components/Total";
 
 function App() {
   let productList = [
-    { name: "iphone", price: 90000, qty: 0 },
-    { name: "iphone2", price: 80000, qty: 0 },
-    { name: "iphone3", price: 70000, qty: 0 },
+    { name: "iphone", price: 90000, qty: 1 },
+    { name: "iphone2", price: 80000, qty: 1 },
+    { name: "iphone3", price: 70000, qty: 1 },
   ];
 
   let [prodList, setProdList] = useState(productList);
